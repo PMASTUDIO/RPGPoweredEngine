@@ -46,19 +46,12 @@ void Game::Update()
 	}
 
 	// UPDATE GAME OBJECTS
-	
-}
+	Engine::Renderer2D::BeginScene(m_Window->GetRenderer());
 
-void Game::Render()
-{
-	SET_RENDER_DRAW_COLOR(m_Window->GetRenderer(), 0, 0, 0, 255);
-	CLEAR_RENDERER(m_Window->GetRenderer());
+	// DRAW GAME OBJECTS
+	m_ActiveScene->OnUpdate(m_Window->GetRenderer(), deltaTime);
 
-	// Draw and render objects
-	m_ActiveScene->OnUpdate(m_Window->GetRenderer(), 0.0f);
-
-	PRESENT(m_Window->GetRenderer());
-
+	Engine::Renderer2D::EndScene(m_Window->GetRenderer());
 }
 
 void Game::Destroy()

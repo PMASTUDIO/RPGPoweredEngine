@@ -9,7 +9,6 @@ int main(int argc, char* args[]){
 	while (myGame->IsRunning()) {
 		myGame->ProcessInput();
 		myGame->Update();
-		myGame->Render();
 	}
 
 	myGame->Destroy();

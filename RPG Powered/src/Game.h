@@ -14,7 +14,6 @@ public:
 	bool IsRunning() const { return m_isRunning; }
 	void ProcessInput();
 	void Update();
-	void Render();
 	void Destroy();
 private:
 	bool m_isRunning;
