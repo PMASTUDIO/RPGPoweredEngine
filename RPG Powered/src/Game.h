@@ -24,4 +24,7 @@ private:
 	Uint32 m_ticksCount;
 
 	Engine::Entity m_SquareEntity;
+	Engine::Entity m_CameraEntity;
+
+	SDL_Texture* m_BoxTexture;
 };

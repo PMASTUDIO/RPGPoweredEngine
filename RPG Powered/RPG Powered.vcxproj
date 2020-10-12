@@ -100,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Assertions.h" />
+    <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\core.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\managers\TextureManager.h" />

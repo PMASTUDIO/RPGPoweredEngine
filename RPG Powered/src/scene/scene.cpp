@@ -25,11 +25,29 @@ Engine::Entity Engine::Scene::CreateEntity(const std::string& name)
 
 void Engine::Scene::OnUpdate(SDL_Renderer* renderer, float dt)
 {
-	auto group = m_Registry.group<TransformComponent>(entt::get<SpriteRendererComponent>);
-	for (auto entity : group) {
-		
-		auto[transform, sprite] = group.get<TransformComponent, SpriteRendererComponent>(entity);
+	// FIND PRIMARY CAMERA
+	Camera* mainCamera = nullptr;
+	{
+		auto view = m_Registry.view<CameraComponent>();
+		for (auto entity : view) {
+			auto& camera = view.get<CameraComponent>(entity);
 
-		Renderer2D::DrawSquare(renderer, transform.position, sprite.Color);
+			if (camera.Primary) {
+				mainCamera = &camera.camera;
+				break;
+			}
+		}
 	}
+
+	// RENDER SCENE IF PRIMARY CAMERA EXISTS
+	if (mainCamera) {
+		auto group = m_Registry.group<TransformComponent>(entt::get<SpriteRendererComponent>);
+		for (auto entity : group) {
+
+			auto [transform, sprite] = group.get<TransformComponent, SpriteRendererComponent>(entity);
+
+			Renderer2D::DrawSquare(renderer, *mainCamera, transform.position, sprite.Color);
+		}
+	}
+	
 }

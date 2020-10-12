@@ -1,8 +1,10 @@
 #include "Game.h"
 #include "core.h"
 #include "scene/components.h"
+#include "managers/TextureManager.h"
 
 #include "Renderer2d.h"
+
 
 Game::Game() : m_isRunning(true), m_ticksCount(0)
 {
@@ -23,9 +25,12 @@ void Game::Init()
 	if(square)
 		square.AddComponent<Engine::SpriteRendererComponent>(glm::vec4{ 0.0f, 255.0f, 0.0f, 255.0f });
 
-	auto blueSquare = m_ActiveScene->CreateEntity("Blue square");
-
 	m_SquareEntity = square;
+
+	m_CameraEntity = m_ActiveScene->CreateEntity("Camera entity");
+	m_CameraEntity.AddComponent<Engine::CameraComponent>(Rect{0, 0, 1280, 720});
+
+	m_BoxTexture = Engine::TextureManager::LoadTexture(m_Window->GetRenderer(), "test_assets/box.jpg");
 }
 
 void Game::ProcessInput()
@@ -54,12 +59,16 @@ void Game::Update()
 	Engine::Renderer2D::BeginScene(m_Window->GetRenderer());
 
 	// DRAW GAME OBJECTS
-	/*Engine::Renderer2D::DrawQuad(m_Window->GetRenderer(), { 50.0f, 50.0f },  { 200.0f, 200.0f }, "test_assets/box.jpg");
-	Engine::Renderer2D::DrawQuad(m_Window->GetRenderer(), { 200.0f, 200.0f }, { 200.0f, 200.0f }, {20, 20, 100, 100}, "test_assets/box.jpg");*/
+	//Engine::Renderer2D::DrawQuad(m_Window->GetRenderer(), m_TestTEMPCamera, { 50.0f, 50.0f },  { 200.0f, 200.0f }, *m_BoxTexture);
+	//Engine::Renderer2D::DrawQuad(m_Window->GetRenderer(), m_TestTEMPCamera, { 200.0f, 200.0f }, { 200.0f, 200.0f }, {20, 20, 100, 100}, *m_BoxTexture);
 
 	m_ActiveScene->OnUpdate(m_Window->GetRenderer(), deltaTime);
 
 	Engine::Renderer2D::EndScene(m_Window->GetRenderer());
+
+	//Rect& cameraDims = m_TestTEMPCamera.GetDimensions();
+	//cameraDims.x += 1000 * deltaTime;
+	//m_TestTEMPCamera.SetDimensions(cameraDims);
 }
 
 void Game::Destroy()
