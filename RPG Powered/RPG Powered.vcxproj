@@ -94,15 +94,18 @@
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\managers\TextureManager.cpp" />
     <ClCompile Include="src\Renderer2d.cpp" />
+    <ClCompile Include="src\scene\entity.cpp" />
     <ClCompile Include="src\scene\scene.cpp" />
     <ClCompile Include="src\window\window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Assertions.h" />
     <ClInclude Include="src\core.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\managers\TextureManager.h" />
     <ClInclude Include="src\Renderer2d.h" />
     <ClInclude Include="src\scene\components.h" />
+    <ClInclude Include="src\scene\entity.h" />
     <ClInclude Include="src\scene\scene.h" />
     <ClInclude Include="src\window\window.h" />
   </ItemGroup>

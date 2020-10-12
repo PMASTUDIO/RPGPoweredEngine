@@ -1,6 +1,8 @@
 #include "scene.h"
 #include "../Renderer2d.h"
 
+#include "entity.h"
+
 Engine::Scene::Scene()
 {
 
@@ -10,9 +12,15 @@ Engine::Scene::~Scene()
 {
 }
 
-entt::entity Engine::Scene::CreateEntity()
+Engine::Entity Engine::Scene::CreateEntity(const std::string& name)
 {
-	return m_Registry.create();
+	Entity e = { m_Registry.create(), this };
+
+	e.AddComponent<TransformComponent>();
+	auto& tag = e.AddComponent<TagComponent>();
+	tag.Tag = name.empty() ? "Unnamed Entity" : name;
+
+	return e;
 }
 
 void Engine::Scene::OnUpdate(SDL_Renderer* renderer, float dt)
