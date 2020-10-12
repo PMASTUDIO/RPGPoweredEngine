@@ -1,10 +1,18 @@
 #include <iostream>
-#include <SDL.h>
-#include "window/window.h"
+#include "Game.h"
 
 int main(int argc, char* args[]){
-	
-	Engine::Window myWindow = Engine::Window("My RPG Engine");
+	Game* myGame = new Game();
+
+	myGame->Init();
+		
+	while (myGame->IsRunning()) {
+		myGame->ProcessInput();
+		myGame->Update();
+		myGame->Render();
+	}
+
+	myGame->Destroy();
 
 	return 0;
 }
