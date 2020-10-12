@@ -3,7 +3,7 @@
 #include <iostream>
 #include <SDL.h>
 
-#define FILL_RECT(x, y) SDL_RenderFillRect(x, y);
+#define FILL_RECT(x, y) SDL_RenderFillRect(x, y)
 using Rect = SDL_Rect;
 
 using Engine_Event = SDL_Event;

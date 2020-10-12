@@ -2,6 +2,7 @@
 
 #include <memory>
 #include "window/window.h"
+#include "scene/scene.h"
 
 class Game {
 public:
@@ -18,4 +19,7 @@ public:
 private:
 	bool m_isRunning;
 	std::unique_ptr<Engine::Window> m_Window;
+	std::unique_ptr<Engine::Scene> m_ActiveScene;
+
+	Uint32 m_ticksCount;
 };

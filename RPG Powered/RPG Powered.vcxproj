@@ -60,6 +60,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -77,6 +78,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -90,11 +92,16 @@
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\Renderer2d.cpp" />
+    <ClCompile Include="src\scene\scene.cpp" />
     <ClCompile Include="src\window\window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core.h" />
     <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\Renderer2d.h" />
+    <ClInclude Include="src\scene\components.h" />
+    <ClInclude Include="src\scene\scene.h" />
     <ClInclude Include="src\window\window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
