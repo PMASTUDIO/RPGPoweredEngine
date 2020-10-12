@@ -22,6 +22,6 @@ void Engine::Scene::OnUpdate(SDL_Renderer* renderer, float dt)
 		
 		auto[transform, sprite] = group.get<TransformComponent, SpriteRendererComponent>(entity);
 
-		Renderer2D::DrawQuad(renderer, transform.position, sprite.Color);
+		Renderer2D::DrawSquare(renderer, transform.position, sprite.Color);
 	}
 }

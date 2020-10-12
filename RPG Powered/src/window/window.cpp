@@ -1,4 +1,5 @@
 #include "window.h"
+#include <SDL_image.h>
 
 namespace Engine {
 	Window::Window() : m_renderer(nullptr), m_window(nullptr)
@@ -27,6 +28,10 @@ namespace Engine {
 		m_renderer = SDL_CreateRenderer(m_window, -1, 0);
 		if (!m_renderer)
 			LOG_ERROR("Error initializing SDL Renderer \n");
+
+		if (!IMG_Init(IMG_INIT_JPG))
+			LOG_ERROR("Error initializing SDL Image for jpg! \n");
+		
 	}
 
 	void Window::Destroy()

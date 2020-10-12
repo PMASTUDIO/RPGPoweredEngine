@@ -4,6 +4,9 @@
 
 #include "Renderer2d.h"
 
+//TEMP
+#include "managers/TextureManager.h"
+
 Game::Game() : m_isRunning(true), m_ticksCount(0)
 {
 	m_Window = std::make_unique<Engine::Window>();
@@ -49,7 +52,10 @@ void Game::Update()
 	Engine::Renderer2D::BeginScene(m_Window->GetRenderer());
 
 	// DRAW GAME OBJECTS
-	m_ActiveScene->OnUpdate(m_Window->GetRenderer(), deltaTime);
+	Engine::Renderer2D::DrawQuad(m_Window->GetRenderer(), { 50.0f, 50.0f },  { 200.0f, 200.0f }, "test_assets/box.jpg");
+	Engine::Renderer2D::DrawQuad(m_Window->GetRenderer(), { 200.0f, 200.0f }, { 200.0f, 200.0f }, {20, 20, 100, 100}, "test_assets/box.jpg");
+
+	//m_ActiveScene->OnUpdate(m_Window->GetRenderer(), deltaTime);
 
 	Engine::Renderer2D::EndScene(m_Window->GetRenderer());
 }
