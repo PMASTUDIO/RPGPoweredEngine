@@ -3,6 +3,12 @@
 #include <iostream>
 #include <SDL.h>
 
+#ifdef BUILD_DLL
+    #define RPP_API __declspec(dllexport)
+#else 
+    #define RPP_API __declspec(dllimport)
+#endif
+
 #define FILL_RECT(x, y) SDL_RenderFillRect(x, y)
 using Rect = SDL_Rect;
 

@@ -5,10 +5,10 @@
 #include "scene/scene.h"
 #include "scene/entity.h"
 
-class Game {
+class RPP_API Game {
 public:
 	Game();
-	~Game();
+	virtual ~Game();
 
 	void Init();
 

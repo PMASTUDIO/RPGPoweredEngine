@@ -65,10 +65,6 @@ void Game::Update()
 	m_ActiveScene->OnUpdate(m_Window->GetRenderer(), deltaTime);
 
 	Engine::Renderer2D::EndScene(m_Window->GetRenderer());
-
-	//Rect& cameraDims = m_TestTEMPCamera.GetDimensions();
-	//cameraDims.x += 1000 * deltaTime;
-	//m_TestTEMPCamera.SetDimensions(cameraDims);
 }
 
 void Game::Destroy()
